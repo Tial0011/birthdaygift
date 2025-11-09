@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Birthday Surprise</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: #f7e6f7;
+        font-family: "Poppins", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .envelope {
+        width: 250px;
+        height: 180px;
+        background: #fff;
+        position: relative;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: transform 0.8s;
+      }
+
+      .flap {
+        width: 0;
+        height: 0;
+        border-left: 125px solid transparent;
+        border-right: 125px solid transparent;
+        border-bottom: 90px solid #ffb3d9;
+        position: absolute;
+        top: -90px;
+        left: 0;
+        transform-origin: bottom;
+        transition: transform 1s;
+      }
+
+      .gift-box {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        animation: bounce 1.5s infinite;
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      .box {
+        width: 150px;
+        height: 150px;
+        background: #ff66b3;
+        position: relative;
+        border-radius: 10px;
+      }
+
+      .ribbon {
+        width: 20px;
+        height: 150px;
+        background: #fff;
+        position: absolute;
+        left: 65px;
+      }
+
+      .message-card {
+        display: none;
+        background: #fff;
+        padding: 20px;
+        width: 80vw;
+        max-width: 400px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        text-align: center;
+        line-height: 1.6;
+        animation: fadein 1s ease forwards;
+      }
+
+      @keyframes fadein {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <audio
+      id="song"
+      src="Simi_Ft_Adekunle_Gold_And_DeJa_Happy_Birthday_9jaflaver.com_.mp3"
+    ></audio>
+
+    <div class="envelope" id="envelope">
+      <div class="flap" id="flap"></div>
+    </div>
+
+    <div class="gift-box" id="giftBox">
+      <div class="box">
+        <div class="ribbon"></div>
+      </div>
+    </div>
+
+    <div class="message-card" id="letter">
+      <p>
+        Joan, <br /><br />
+        There are people who enter a room and the air changes, softer, lighter,
+        warmer. That's you. Your presence has a way of settling things, of
+        making even ordinary moments feel meaningful.
+        <br /><br />
+        We just wanted to remind you of that today.
+        <br /><br />
+        You’re kind in a way the world doesn’t always teach. You give without
+        announcing it. You love quietly but deeply. And the people who get to
+        know you, get to stay in that warmth you carry.
+        <br /><br />
+        We are grateful for you. For your laughter, for your gentleness, for
+        your sincerity, and for the way you care. You deserve a year that feels
+        safe, soft, and full of things that make your heart widen.
+        <br /><br />
+        May this new chapter bring peace where there was worry. Ease where there
+        was effort. And joy that doesn’t need to be earned.
+        <br /><br />
+        Happy Birthday, Joan.
+        <br />
+        You are loved, truly.
+        <br /><br />
+        With warmth,
+        <br />
+        Alex & Ope
+      </p>
+    </div>
+
+    <script>
+      const envelope = document.getElementById("envelope");
+      const flap = document.getElementById("flap");
+      const giftBox = document.getElementById("giftBox");
+      const letter = document.getElementById("letter");
+      const song = document.getElementById("song");
+
+      envelope.onclick = () => {
+        flap.style.transform = "rotateX(180deg)";
+        setTimeout(() => {
+          envelope.style.display = "none";
+          giftBox.style.display = "flex";
+          song.play();
+        }, 1000);
+      };
+
+      giftBox.onclick = () => {
+        giftBox.style.display = "none";
+        letter.style.display = "block";
+      };
+    </script>
+  </body>
+</html>
